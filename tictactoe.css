@@ -1,6 +1,9 @@
+h1 {
+  text-align: center;
+}
+
 body {
   background-color: #EEF3E2;
-  font-size: 80px;
   font-family: Helvetica;
 }
 
@@ -11,6 +14,7 @@ body {
 }
 
 td {
+  font-size: 80px;
   background-color: white;
   border-radius: 10px;
   width: 100px;
@@ -19,6 +23,10 @@ td {
 }
 
 #reset {
-  margin-left: 200px;
-  font-size: 30px;
+  font-size: 25px;
+  margin-top: 40px;
+}
+
+#button {
+  text-align: center;
 }

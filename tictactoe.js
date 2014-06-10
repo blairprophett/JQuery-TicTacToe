@@ -1,48 +1,55 @@
 "use strict";
 
-// var board =
-
-// //winning combinations:
-// [[1, 2, 3],
-// [4, 5, 6],
-// [7, 8, 9],
-// [1, 4, 7],
-// [2, 5, 8],
-// [3, 6, 9],
-// [1, 5, 9],
-// [3, 5, 7]]
-
 $(document).ready(function() {
 
-  var current_turn = "X"
-
-  $("#board").delegate( "td", "click", function(e) {
-    // console.log("TD clicked");
-    // console.log(e.target);
-    // console.log(e.currentTarget);
-    // console.log(e.delegateTarget);
-    // console.log(this);
-    var square = $(e.target)
-    var current = square.html();  
-
-    function toggle_turn() {
+  function toggle_turn() {
       current_turn = (current_turn === 'X') ? 'O' : 'X'
     };
+
+  function reset_board(){
+    $("td").empty();
+  };
+
+  var current_turn = "X";
+
+  $("#board").delegate( "td", "click", function(e) {
+   
+    var square = $(e.target);
+    var current = square.html();
+    var arr_x = [];
+    var arr_y = [];
 
     if(current === "") {
       square.html(current_turn);
       toggle_turn()
-    }
-  })
+      if (current === "X"){
+        arr_x.push(square)
+      }
+      else 
+        arr_y.push(square)
+      }
 
-function reset_board(){
-  $("td").empty();
-}
+    var winner = [ //winning combinations
+    ["one", "two", "three"],
+    ["four", "five", "six"],
+    ["seven", "eight", "nine"],
+    ["one", "four", "seven"],
+    ["two", "five", "eight"],
+    ["three", "six", "nine"],
+    ["one", "five", "nine"],
+    ["three", "five", "seven"]
+    ];
 
+    for (var i = 0; i < winner.length; i++) {
+      if(arr_x === winner[i]){
+        alert("winner!");
+      }
+      else(arr_y === winner[i])
+        alert("winner!");
+      }
+    })
 
-$("#reset").click(function(){
-  reset_board()
-});
-
-
+  $("#reset").click(function(){
+    reset_board()
+  });
 });
